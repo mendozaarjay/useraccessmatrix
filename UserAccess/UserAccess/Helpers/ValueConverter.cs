@@ -4,7 +4,7 @@
     {
         public static bool ConvertToBoolean(string value)
         {
-            if (value.Equals("1"))
+            if (value.Equals("1") || value.ToLower().Equals("true"))
                 return true;
             else return false;
         }
