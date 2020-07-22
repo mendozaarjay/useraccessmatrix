@@ -7,14 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserAccess.Models;
+using UserAccess.Utilities;
 
 namespace UserAccess
 {
     public partial class MainForm : Form
     {
+        private IEnumerable<UserAccessItem> AccessItems { get; set; }
         public MainForm()
         {
             InitializeComponent();
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            this.AccessItems = AccessMatrix.GetUserAccess(int.Parse(Properties.Settings.Default.CurrentUserId));
+            var module = AccessItems.Any(a => a.ModuleCode == "SMOD");
+            var role = AccessItems.Any(a => a.ModuleCode == "SROL");
+            var roleass = AccessItems.Any(a => a.ModuleCode == "SRMA");
+            var uam = AccessItems.Any(a => a.ModuleCode == "SUAM");
+
+            if (module || role || roleass || uam)
+            {
+                menuStrip1.Visible = true;
+            }
+            else
+            {
+                menuStrip1.Visible = false;
+            }
+            modulesToolStripMenuItem.Visible = module;
+            rolesToolStripMenuItem.Visible = role;
+            roleModuleAssignmentToolStripMenuItem.Visible = roleass;
+            userAccessMatrixToolStripMenuItem.Visible = uam;
+            base.OnLoad(e);
         }
         private bool IsAlreadyOpen(string formname)
         {
@@ -32,20 +57,24 @@ namespace UserAccess
 
         private void modulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!IsAlreadyOpen("Modules"))
+            var module = AccessItems.FirstOrDefault(a => a.ModuleCode == "SMOD");
+            if (!IsAlreadyOpen("Modules") && module.CanAccess)
             {
                 Modules frm = new Modules();
                 frm.MdiParent = this;
                 frm.WindowState = FormWindowState.Maximized;
+                frm.UserAccess = module;
                 frm.Show();
             }
         }
 
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!IsAlreadyOpen("Roles"))
+            var roles = AccessItems.FirstOrDefault(a => a.ModuleCode == "SROL");
+            if (!IsAlreadyOpen("Roles") && roles.CanAccess)
             {
                 Roles frm = new Roles();
+                frm.UserAccess = roles;
                 frm.MdiParent = this;
                 frm.WindowState = FormWindowState.Maximized;
                 frm.Show();
@@ -54,9 +83,11 @@ namespace UserAccess
 
         private void roleModuleAssignmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!IsAlreadyOpen("RoleModulesAssignment"))
+            var roleass = AccessItems.FirstOrDefault(a => a.ModuleCode == "SRMA");
+            if (!IsAlreadyOpen("RoleModulesAssignment") && roleass.CanAccess)
             {
                 RoleModulesAssignment frm = new RoleModulesAssignment();
+                frm.UserAccess = roleass;
                 frm.MdiParent = this;
                 frm.WindowState = FormWindowState.Maximized;
                 frm.Show();
@@ -65,9 +96,11 @@ namespace UserAccess
 
         private void userAccessMatrixToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!IsAlreadyOpen("UserAccessMatrix"))
+            var uam = AccessItems.FirstOrDefault(a => a.ModuleCode == "SUAM");
+            if (!IsAlreadyOpen("UserAccessMatrix") && uam.CanAccess)
             {
                 UserAccessMatrix frm = new UserAccessMatrix();
+                frm.UserAccess = uam;
                 frm.MdiParent = this;
                 frm.WindowState = FormWindowState.Maximized;
                 frm.Show();

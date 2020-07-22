@@ -16,6 +16,7 @@ namespace UserAccess
 {
     public partial class UserAccessMatrix : Form
     {
+        public UserAccessItem UserAccess { get; set; }
         private UserAccessMatrixServices services = new UserAccessMatrixServices();
         public UserAccessMatrix()
         {
@@ -34,8 +35,16 @@ namespace UserAccess
             CheckForIllegalCrossThreadCalls = false;
             await LoadAllUsers();
             isLoading = true;
-           
+            LoadAccess();
             base.OnLoad(e);
+        }
+        private void LoadAccess()
+        {
+            //btnNew.Visible = UserAccess.CanAdd;
+            btnSave.Visible = UserAccess.CanSave;
+            //btnEdit.Visible = UserAccess.CanEdit;
+            //btnDelete.Visible = UserAccess.CanDelete;
+            //btnFind.Visible = UserAccess.CanSearch;
         }
         protected override void OnShown(EventArgs e)
         {

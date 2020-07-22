@@ -25,8 +25,8 @@ namespace UserAccess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-SNE52L4\\SQLEXPRESS;Initial Catalog=TEKTITE_NEW;Persist Securi" +
-            "ty Info=True;User ID=sa;Password=zealadmin01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=TEKTITE_NEW;Persist Security Info=True;U" +
+            "ser ID=sa;Password=zealadmin01")]
         public string UserConnectionString {
             get {
                 return ((string)(this["UserConnectionString"]));
@@ -38,7 +38,7 @@ namespace UserAccess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("137")]
         public string CurrentUserId {
             get {
                 return ((string)(this["CurrentUserId"]));

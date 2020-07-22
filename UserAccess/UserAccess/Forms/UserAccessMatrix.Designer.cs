@@ -39,6 +39,10 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnCheckAll = new System.Windows.Forms.ToolStripButton();
             this.dgItems = new System.Windows.Forms.DataGridView();
+            this.dtlId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtlRoleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtlRoleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtlRoleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboUsers = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,10 +54,6 @@
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnFind = new System.Windows.Forms.ToolStripButton();
-            this.dtlId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtlRoleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtlRoleCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtlRoleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -157,6 +157,40 @@
             this.dgItems.RowTemplate.Height = 24;
             this.dgItems.Size = new System.Drawing.Size(890, 502);
             this.dgItems.TabIndex = 1;
+            // 
+            // dtlId
+            // 
+            this.dtlId.HeaderText = "Id";
+            this.dtlId.MinimumWidth = 6;
+            this.dtlId.Name = "dtlId";
+            this.dtlId.ReadOnly = true;
+            this.dtlId.Visible = false;
+            this.dtlId.Width = 125;
+            // 
+            // dtlRoleId
+            // 
+            this.dtlRoleId.HeaderText = "RoleId";
+            this.dtlRoleId.MinimumWidth = 6;
+            this.dtlRoleId.Name = "dtlRoleId";
+            this.dtlRoleId.ReadOnly = true;
+            this.dtlRoleId.Visible = false;
+            this.dtlRoleId.Width = 125;
+            // 
+            // dtlRoleCode
+            // 
+            this.dtlRoleCode.HeaderText = "Role Code";
+            this.dtlRoleCode.MinimumWidth = 6;
+            this.dtlRoleCode.Name = "dtlRoleCode";
+            this.dtlRoleCode.ReadOnly = true;
+            this.dtlRoleCode.Width = 125;
+            // 
+            // dtlRoleDescription
+            // 
+            this.dtlRoleDescription.HeaderText = "Role Description";
+            this.dtlRoleDescription.MinimumWidth = 6;
+            this.dtlRoleDescription.Name = "dtlRoleDescription";
+            this.dtlRoleDescription.ReadOnly = true;
+            this.dtlRoleDescription.Width = 250;
             // 
             // cboUsers
             // 
@@ -283,39 +317,7 @@
             this.btnFind.Text = "&Find";
             this.btnFind.Visible = false;
             // 
-            // dtlId
-            // 
-            this.dtlId.HeaderText = "Id";
-            this.dtlId.MinimumWidth = 6;
-            this.dtlId.Name = "dtlId";
-            this.dtlId.Visible = false;
-            this.dtlId.Width = 125;
-            // 
-            // dtlRoleId
-            // 
-            this.dtlRoleId.HeaderText = "RoleId";
-            this.dtlRoleId.MinimumWidth = 6;
-            this.dtlRoleId.Name = "dtlRoleId";
-            this.dtlRoleId.Visible = false;
-            this.dtlRoleId.Width = 125;
-            // 
-            // dtlRoleCode
-            // 
-            this.dtlRoleCode.HeaderText = "Role Code";
-            this.dtlRoleCode.MinimumWidth = 6;
-            this.dtlRoleCode.Name = "dtlRoleCode";
-            this.dtlRoleCode.ReadOnly = true;
-            this.dtlRoleCode.Width = 125;
-            // 
-            // dtlRoleDescription
-            // 
-            this.dtlRoleDescription.HeaderText = "Role Description";
-            this.dtlRoleDescription.MinimumWidth = 6;
-            this.dtlRoleDescription.Name = "dtlRoleDescription";
-            this.dtlRoleDescription.ReadOnly = true;
-            this.dtlRoleDescription.Width = 250;
-            // 
-            // UserRoleAssignment
+            // UserAccessMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -323,9 +325,8 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.bindingNavigator1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UserRoleAssignment";
+            this.Name = "UserAccessMatrix";
             this.Text = "User Access Matrix";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

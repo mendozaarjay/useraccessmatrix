@@ -16,6 +16,7 @@ namespace UserAccess
     public partial class RoleModulesAssignment : Form
     {
         private RoleModuleAssignmentServices services = new RoleModuleAssignmentServices();
+        public UserAccessItem UserAccess { get; set; }
         public RoleModulesAssignment()
         {
             InitializeComponent();
@@ -27,9 +28,18 @@ namespace UserAccess
             btnNew.Visible = btnDelete.Visible = btnEdit.Visible = btnCancel.Visible = btnFind.Visible = false;
             LoadAllRoles();
             cboRoles.SelectedValue = string.Empty;
+            LoadAccess();
             this.PerformLayout();
         
             base.OnLoad(e);
+        }
+        private void LoadAccess()
+        {
+            //btnNew.Visible = UserAccess.CanAdd;
+            btnSave.Visible = UserAccess.CanSave;
+            //btnEdit.Visible = UserAccess.CanEdit;
+            //btnDelete.Visible = UserAccess.CanDelete;
+            //btnFind.Visible = UserAccess.CanSearch;
         }
         private async void LoadAllRoles()
         {

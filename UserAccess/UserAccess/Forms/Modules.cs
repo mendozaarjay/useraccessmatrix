@@ -8,6 +8,7 @@ namespace UserAccess
 {
     public partial class Modules : Form
     {
+        public UserAccessItem UserAccess { get; set; }
         private enum OperationType
         {
             Default,
@@ -38,7 +39,17 @@ namespace UserAccess
             LoadModuleTypes();
             LoadAllRecords();
             dgItems.ClearSelection();
+            LoadAccess();
             base.OnLoad(e);
+        }
+
+        private void LoadAccess()
+        {
+            btnNew.Visible = UserAccess.CanAdd;
+            btnSave.Visible = UserAccess.CanSave;
+            btnEdit.Visible = UserAccess.CanEdit;
+            btnDelete.Visible = UserAccess.CanDelete;
+            btnFind.Visible = UserAccess.CanSearch;
         }
 
         private void LoadModuleTypes()

@@ -19,7 +19,7 @@ namespace UserAccess
         }
         public static DataTable Modules()
         {
-            var sql = "SELECT * FROM [dbo].[fnGetAllModules]() [fgam]";
+            var sql = "SELECT * FROM  [dbo].[fnGetAllModules]() [f] ORDER BY [f].[Type], [f].[ModuleId]";
             var result =  DatabaseHelper.LoadDataTable(sql, Properties.Settings.Default.UserConnectionString);
             return result;
         }

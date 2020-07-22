@@ -8,6 +8,7 @@ namespace UserAccess
 {
     public partial class Roles : Form
     {
+        public UserAccessItem UserAccess { get; set; }
         private enum OperationType
         {
             Default,
@@ -37,7 +38,16 @@ namespace UserAccess
             EnableFields(false);
             LoadAllRecords();
             dgItems.ClearSelection();
+            LoadAccess();
             base.OnLoad(e);
+        }
+        private void LoadAccess()
+        {
+            btnNew.Visible = UserAccess.CanAdd;
+            btnSave.Visible = UserAccess.CanSave;
+            btnEdit.Visible = UserAccess.CanEdit;
+            btnDelete.Visible = UserAccess.CanDelete;
+            btnFind.Visible = UserAccess.CanSearch;
         }
         protected override void OnShown(EventArgs e)
         {
